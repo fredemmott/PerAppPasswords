@@ -1,0 +1,21 @@
+<h1>Your Passwords</h1>
+
+<table>
+  <tr>
+    <th>App</th>
+    <th>Last Used</th>
+    <th></th>
+  </tr>
+
+<% @passwords.each do |password| %>
+  <tr>
+    <td><%= password.title %></td>
+    <td><%= password.last_used %></td>
+    <td><%= link_to 'Remove', password, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Password', new_password_path %>

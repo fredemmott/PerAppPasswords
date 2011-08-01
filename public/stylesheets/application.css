@@ -1,0 +1,9 @@
+.password {
+  clear: both;
+  display: inline-block;
+  background-color: gold;
+  border: 1px solid goldenrod;
+  padding: 0.5em;
+  font-size: 150%;
+  font-family: monospace;
+}

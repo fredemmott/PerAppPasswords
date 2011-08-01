@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>App:</b>
+  <%= @password.title %>
+</p>
+
+<p>
+  <b>Last used:</b>
+  <%= @password.last_used %>
+</p>
+
+<% if flash[:password] -%>
+<p>
+<b>Password (spaces not important):</b><br />
+<span class='password'><%=h flash[:password] -%></span><br />
+<i>This password will not be displayed again.</i>
+</p>
+<% end -%>
+
+<%= link_to 'Back', passwords_path %>
