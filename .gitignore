@@ -1,3 +1,6 @@
+config/database.yml
+config/setup_load_paths.rb
+.htaccess
 .bundle
 .rvmrc
 db/*.sqlite3
