@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# Usage:
+#
+#  Put something the following in the relevant pam config file; this will be
+#  something like /etc/pam.d/dovecot:
+#
+#  auth sufficient pam_exec.so expose_authtok quiet /path/to/scripts/pam_verify https://www.example.com/verify
+#
+#  Replace https://www.example.com/verify with the URL to your installation.
+#
+# Notes:
+# - this works with Ruby 1.8 and Ruby 1.9
+# - no extra dependencies
+
+require 'net/http'
+require 'net/https'
+require 'uri'
+
+user     = ENV['PAM_USER']
+password = STDIN.first.strip
+uri      = URI.parse(ARGV.first)
+
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true if uri.scheme == 'https'
+
+request = Net::HTTP::Post.new(uri.path)
+request.set_form_data(:user => user, :password => password)
+response = http.start{|http| http.request(request)}
+result = response.body.strip
+
+puts result
+exit result == 'SUCCESS'
