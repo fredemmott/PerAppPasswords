@@ -1,0 +1,10 @@
+# Insert standard auth methods for Apache here.
+
+<Files "*">
+  require valid-user
+</Files>
+
+<FilesMatch "^/?verify.*$>
+  Allow from all
+  Satisfy any
+</FilesMatch>
