@@ -1,3 +1,21 @@
 <h1>Per-App Passwords</h1>
 
+<% if @result -%>
+
+<% unless @code.nil? -%>
+<p id='error_explanation'>
+  The code you entered was incorrect.
+</p>
+<% end -%>
+
+<p>Enter your Google Authenticator code for
+<%=h Socket.gethostbyname(Socket.gethostname).first %>:</p>
+
+<%= form_tag('/') do -%>
+  <%= text_field_tag 'otpcode', nil, :size => 6 %>
+  <%= submit_tag 'Submit' %>
+<% end -%>
+
+<% else -%>
 <p>You must log in to use this system.</p>
+<% end -%>
