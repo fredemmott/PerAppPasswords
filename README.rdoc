@@ -1,4 +1,4 @@
-== Overview
+= Overview
 
 This lets each of your devices that you use your mail have a different
 password. The major advantages are if you lose a device, or it otherwise
@@ -9,7 +9,10 @@ gets compromised:
   have access to your mail - nothing else that your normal password gives
   access to (eg SSH)
 
-== Moving Parts
+If you are running ga-verifyd (see https://github.com/fredemmott/ga-verify),
+uses with tokens setup will be prompted for their token when logging in.
+
+= Moving Parts
 
 There's three parts:
 * A web site for configuring per-app passwords (standard rails)
@@ -18,10 +21,8 @@ There's three parts:
 
 The latter is what ends up being called by your mail server when you want to authenticate.
 
-== Setup
+= Installation
 
-TODO: actually put something decent here.
-
-* Set this up as a normal Rails app
+* Install like any other Rails app
 * Restrict access to everything except /verify (see htaccess-example)
 * Hook it into pam (see comments in script/pam_verify)
